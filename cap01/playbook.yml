@@ -1,0 +1,11 @@
+---
+ - hosts: servers
+   tasks:
+    - name: "instalar apache"
+      yum:
+        name: httpd
+        state: latest
+    - name: "Levantar apache"
+      service:
+        name: httpd
+        state: started
