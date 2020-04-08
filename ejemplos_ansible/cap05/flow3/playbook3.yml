@@ -1,0 +1,9 @@
+---
+ - hosts: servers
+   become: true
+   tasks:
+    - name: "Remover si es debian"
+      apt:
+        name: nmap
+        state: absent 
+      when: ansible_os_family == "Debian"

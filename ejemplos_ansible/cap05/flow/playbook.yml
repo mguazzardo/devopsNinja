@@ -1,0 +1,11 @@
+---
+ - hosts: serverc
+   become: true
+   vars:
+     correr_tarea: true
+   tasks:
+    - name: "Instalar nmap segun el when"
+      yum:
+        name: nmap
+        state: latest
+      when: correr_tarea

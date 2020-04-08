@@ -1,0 +1,8 @@
+---
+ - hosts: servers
+   become: true
+   tasks:
+    - name: "Demostrando como funciona jinja2"
+      template:
+        src: network.j2
+        dest: network.txt

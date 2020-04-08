@@ -1,0 +1,14 @@
+---
+ - hosts: dbservers
+   become: yes
+   tasks:
+    - name: "Instalar mariadb"
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: "Levantar mariadb"
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+  

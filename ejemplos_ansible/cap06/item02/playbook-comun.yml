@@ -1,0 +1,27 @@
+---
+ - hosts: serverc
+   become: true
+   tasks: 
+    - name: "Instalar apache "
+      yum:
+        name: httpd 
+        state: latest
+    - name: "Instalar mariadb"
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: "Levantar servicios"
+      service: 
+        name: httpd
+        state: started
+        enabled: true
+    - name: "Levantar mariadb"
+      service:
+        name: mariadb
+        state: started
+        enabled: true
+
+
+
+
+       

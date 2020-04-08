@@ -1,0 +1,9 @@
+---
+ - hosts: servers
+   become: true
+   tasks:
+    - name: "Remover nmap si when"
+      yum:
+        name: nmap
+        state: latest
+      when: ansible_hostname == "1ae99947b422"

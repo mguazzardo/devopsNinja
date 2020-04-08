@@ -1,0 +1,18 @@
+---
+ - hosts: serverc
+   become: true
+   tasks:
+    - name: "Instalar apache"
+      yum:
+        name: httpd
+        state: latest
+      notify:
+        - restart_service
+   handlers:
+    - name: restart_service
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+

@@ -1,0 +1,7 @@
+---
+ - hosts: servers
+   become: true
+   tasks:
+    - name: "shut down Debian flavored systems"
+      command: /sbin/shutdown -t now
+      when: ansible_os_family == "Debian" 

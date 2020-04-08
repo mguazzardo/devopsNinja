@@ -1,0 +1,21 @@
+---
+ - hosts: web
+   become: yes
+   tasks: 
+    - name: "Incluir variables"
+      include_vars: vars/vars1.yml
+    - name: "Instalar {{ paquete }}"
+      yum:
+        name: "{{ paquete }}"
+        state: latest
+    - name: "Copiar archivo Jinja2"
+      template:
+        src: index.j2
+        dest: /var/www/html/index.html
+      notify: start_service
+   handlers:
+    - name: "start_service"
+      service:
+        name: "{{ servicio }}"
+        state: started
+        enabled: true 

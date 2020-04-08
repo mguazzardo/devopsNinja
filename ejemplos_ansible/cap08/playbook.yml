@@ -1,0 +1,13 @@
+---
+ - hosts: servers
+   become: true
+   tasks: 
+    - name: "Instalar nmap si debian"
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+       - nmap
+       - mc
+       - lynx
+      when: ansible_os_family == "Debian"

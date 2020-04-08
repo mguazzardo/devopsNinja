@@ -1,0 +1,19 @@
+---
+ - hosts: servers
+   become: true
+   vars:
+     paquete: "httpd"
+   tasks:
+    - name: "Instalar {{ paquete }}"
+      apt:
+        name: "{{ paquete }}"
+        state: latest
+      notify:
+       - start_service
+   handlers:
+    - name: "start_service"
+      service:
+        name: "{{ paquete }}"
+        state: started
+        enabled: true
+

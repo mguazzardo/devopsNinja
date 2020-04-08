@@ -1,0 +1,17 @@
+---
+ - hosts: serverc
+   become: true
+   tasks: 
+    - name: "Instalar apache "
+      yum:
+        name: httpd 
+        state: absent 
+    - name: "Instalar mariadb"
+      yum:
+        name: mariadb-server
+        state: absent
+
+
+
+
+       

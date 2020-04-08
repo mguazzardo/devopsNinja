@@ -1,0 +1,19 @@
+---
+ - hosts: dbservers
+   become: yes
+   tasks:
+    - name: "Instalar mariadb"
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: "Levantar mariadb"
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+    - name: "Create mysql user"
+      mysql_user: 
+        login_password: "master"
+        name: "root"
+        password: "master"
+        host: "%"

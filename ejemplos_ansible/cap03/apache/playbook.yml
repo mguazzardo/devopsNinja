@@ -1,0 +1,18 @@
+---
+ - hosts: servers
+   become: true
+   tasks:
+    - name: "Instalar apache"
+      yum:
+        name: httpd
+        state: latest
+    - name: "Levantar apache"
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: "Copiar contenido"
+      copy:
+        src: hola.html
+        dest: /var/www/html/hola.html
+ 

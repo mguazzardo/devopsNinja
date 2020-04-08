@@ -1,0 +1,9 @@
+---
+ - hosts: servers
+   become: true
+   tasks:
+    - name: "copiar si es debian"
+      copy:
+        src: mensaje.txt
+        dest: /tmp/mensaje.txt
+      when: ansible_os_family == "Debian"

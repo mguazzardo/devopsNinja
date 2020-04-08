@@ -1,0 +1,13 @@
+---
+ - hosts: serverc
+   become: true
+   tasks:
+    - name: "instalar paquetes con items"
+      yum: 
+        name: "{{ item }}"
+        state: absent 
+      with_items:
+       - nmap
+       - mc
+
+
