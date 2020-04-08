@@ -9,7 +9,7 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
+        sh 'cd pipe01'
         app = docker.build("eboraas/apache-php-new")
     }
     stage('Correr el contenedor'){
