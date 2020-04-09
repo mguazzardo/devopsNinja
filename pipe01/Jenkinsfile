@@ -3,15 +3,9 @@ pipeline {
 
 
     stages {
-
-        stage("Build") {
-		steps { docker.build("miapache")	    }
-	}
-	    stage("Lanzar"){
-		    steps {
-		    sh 'docker run -d --name apache -p 81:80 miapache'
-		} // del step
-	} //del stage
-    } // del stages
-} // del pipeline
+	    stage('Construir'){
+		    steps { docker.build('micustom') }
+	    }
+    }
+}
 
