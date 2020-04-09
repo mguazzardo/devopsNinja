@@ -7,6 +7,8 @@ pipeline {
         stage("Build") {
             steps { 
 		    app = docker.build("miapache")
+	    }
+		steps {
 		    sh 'docker run -d --name apache -p 81:80 miapache'
 		} // del step
 	} //del stage
