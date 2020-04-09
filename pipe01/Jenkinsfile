@@ -8,10 +8,12 @@ pipeline {
             steps { 
 		    app = docker.build("miapache")
 	    }
-		steps {
+	}
+	    stage("Lanzar"){
+		    steps {
 		    sh 'docker run -d --name apache -p 81:80 miapache'
 		} // del step
 	} //del stage
-    } // del stage
+    } // del stages
 } // del pipeline
 
