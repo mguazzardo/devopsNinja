@@ -1,18 +1,15 @@
-node {
+pipeline {
+    agent any
 
-    stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
 
-        checkout scm
-    }
+    stages {
 
-    stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-        sh 'cd pipe01'
-        app = docker.build("eboraas/apache-php-new")
-    }
-    stage('Correr el contenedor'){
-	sh 'docker run -d --name apache -p 81:80 eboraas/apache-php-new'
-	}
-}
+        stage("Build") {
+            steps { 
+		    app = docker.build("miapache")
+		    sh 'docker run -d --name apache -p 81:80 miapache'
+		} // del step
+	} //del stage
+    } // del stage
+} // del pipeline
+
